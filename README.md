@@ -1,0 +1,2 @@
+# Android_Bluetooth_Frame
+一个最简单的Android的蓝牙串口收发框架
