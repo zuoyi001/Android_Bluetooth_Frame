@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,29 +8,91 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="cn.jingedawang.bluetoothdemo.MainActivity">
+    tools:context="cn.jingedawang.bluetoothdemo.MainActivity"
+    android:orientation="vertical"
+    android:layout_gravity="fill">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="未连接"
-        android:id="@+id/txtIsConnected" />
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="未连接"
+            android:id="@+id/txtIsConnected" />
+
+        <Button
+            android:text="连接蓝牙设备"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnPairedDevices" />
+
+        <CheckBox
+            android:id="@+id/HEX"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HEX"
+            />
+
+    </LinearLayout>
+
 
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:inputType="textMultiLine"
         android:ems="10"
         android:layout_below="@+id/txtIsConnected"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/edtReceivedMessage"
         android:hint="接收区"
         android:layout_alignParentEnd="true" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:baselineAligned="true">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="textPersonName"
+            android:text=""
+            android:hint="在此填写发送内容"
+            android:ems="10"
+            android:layout_below="@+id/edtSentMessage"
+            android:layout_alignParentStart="true"
+            android:id="@+id/edtSendMessage"
+            android:layout_toStartOf="@+id/btnSend" />
+
+        <Button
+            android:layout_marginLeft="10dp"
+            android:text="发送"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/edtSendMessage"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/btnSend" />
+
+    </LinearLayout>
+
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
         android:inputType="textMultiLine"
         android:ems="10"
@@ -41,35 +103,4 @@
         android:hint="发送区"
         android:layout_alignParentEnd="true" />
 
-    <Button
-        android:text="连接蓝牙设备"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="47dp"
-        android:id="@+id/btnPairedDevices"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text=""
-        android:hint="在此填写发送内容"
-        android:ems="10"
-        android:layout_below="@+id/edtSentMessage"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="21dp"
-        android:id="@+id/edtSendMessage"
-        android:layout_toStartOf="@+id/btnSend" />
-
-    <Button
-        android:text="发送"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/edtSendMessage"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/btnSend" />
-
-
-</RelativeLayout>
+</LinearLayout>

@@ -9,6 +9,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +48,7 @@ public class MainActivity extends Activity {
     private EditText edtSendMessage;
     private Button btnSend;
     private Button btnPairedDevices;
+    private CheckBox HEX;
 
     private BluetoothAdapter mBluetoothAdapter;
     private ConnectedThread mConnectedThread;
@@ -139,6 +141,7 @@ public class MainActivity extends Activity {
         edtSendMessage = (EditText) findViewById(R.id.edtSendMessage);
         btnSend = (Button) findViewById(R.id.btnSend);
         btnPairedDevices = (Button) findViewById(R.id.btnPairedDevices);
+        HEX = (CheckBox)findViewById(R.id.HEX);
 
         btnPairedDevices.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -670,32 +673,34 @@ public class MainActivity extends Activity {
                         for (int i=0; i < length; i++) {
                             char c = (char) buffer[i];
 
-                            GetByteData(c);
+                            //GetByteData(c);
 
 //                            if(c=='@')  //如果收到数据是STD2数据帧的帧头
 //                            {
 //                                h="";
 //                            }
-
-//                            if(c!=0x20) {
-//                                edtReceivedMessage.getText().append(c); //将接收到的数据追加到文本编辑器
-//                                //h = h + c;
-//
-//                            }
-//                            String temp = Integer.toHexString(buffer[i] & 0xFF);
-//                            if(temp.length() == 1){
-//                                temp = "0" + temp;
-//                            }
-//                            h = h + " "+temp;
-
-
-
+                              if(HEX.isChecked())
+                              {
+                                  String temp = Integer.toHexString(buffer[i] & 0xFF);
+                                  if(temp.length() == 1){
+                                      temp = "0" + temp;
+                                  }
+                                  edtReceivedMessage.getText().append(temp);
+                              }
+                              else {
+                                  edtReceivedMessage.getText().append(c); //将接收到的数据追加到文本编辑器
+                              }
+                            String temp = Integer.toHexString(buffer[i] & 0xFF);
+                            if(temp.length() == 1){
+                                temp = "0" + temp;
+                            }
+                            h = h + " "+temp;
                         }
 
 
 
-                        //Log.d("BLE", "D:"+   h.replace(" ", "").replaceAll("\r|\n", ""));
-                        //Log.d("BLE", "D:"+   h);
+                        Log.d("BLE", "Data: "+   h.replace(" ", "").replaceAll("\r|\n", ""));
+                        Log.d("BLE", "Data: "+   h);
 
                        //String s = new String(buffer);
 
