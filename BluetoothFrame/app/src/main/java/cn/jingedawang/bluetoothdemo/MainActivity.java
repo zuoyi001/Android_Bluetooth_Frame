@@ -685,7 +685,8 @@ public class MainActivity extends Activity {
                                   if(temp.length() == 1){
                                       temp = "0" + temp;
                                   }
-                                  edtReceivedMessage.getText().append(temp);
+
+                                  edtReceivedMessage.getText().append(temp.toUpperCase()+" ");
                               }
                               else {
                                   edtReceivedMessage.getText().append(c); //将接收到的数据追加到文本编辑器
@@ -697,7 +698,7 @@ public class MainActivity extends Activity {
                             h = h + " "+temp;
                         }
 
-
+                        //edtReceivedMessage.getText().append("\r\n");
 
                         Log.d("BLE", "Data: "+   h.replace(" ", "").replaceAll("\r|\n", ""));
                         Log.d("BLE", "Data: "+   h);
